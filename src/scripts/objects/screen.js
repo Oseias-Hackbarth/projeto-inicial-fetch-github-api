@@ -1,26 +1,29 @@
 const screen = {
     userProfile: document.querySelector('.profile-data'),
     renderUser(user) {
-        this.userProfile.innerHTML = `<div class="info">
-                            <img src="${user.avatarUrl}" alt="foto do perfil do usuário" />
-                            <div class="data">
-                              <h1> ${user.name ?? 'Não possui nome cadastrado 😢'}</h1>
-                              <p> ${user.bio ?? 'Não possui bio cadastrada 😢'}</p>
-                              <p class="followers">${user.followers} 👥followers ◾ ${user.following} following</p>
-                            </div>
-                                       </div>`;
+        this.userProfile.innerHTML = 
+        `<div class="info">
+            <img src="${user.avatarUrl}" alt="foto do perfil do usuário" />
+            <div class="data">
+                 <h1> ${user.name ?? 'Não possui nome cadastrado 😢'}</h1>
+                 <p> ${user.bio ?? 'Não possui bio cadastrada 😢'}</p>
+                 <p class="followers">${user.followers} 👥followers ◾ ${user.following} following</p>
+            </div>
+        </div>`;
 
         let repositoriesItens = "";
 
-        user.repositories.forEach(repo => repositoriesItens +=  `<li>
-            <a href="${repo.html_url}" target="_blank"><span class="repo-name">${repo.name}</span><br>
-            <ul class="repo-info">
-            <li>⭐${repo.stargazers_count}</li> 
-            <li>🍴${repo.forks_count}</li>  
-            <li>👀${repo.watchers_count}</li>  
-            <li>📝${repo.language ?? 'N/A'}</li>
-            </ul>
-            </a> </li> `)
+        user.repositories.forEach(repo => repositoriesItens +=  
+            `<li>
+              <a href="${repo.html_url}" target="_blank"><span class="repo-name">${repo.name}</span><br>
+                  <ul class="repo-info">
+                      <li>⭐${repo.stargazers_count || 'Sem estrelas'}</li> 
+                      <li>🍴${repo.forks_count || 'Sem forks'}</li>  
+                      <li>👀${repo.watchers_count || 'Sem vizualizacões'}</li>  
+                      <li>📝${repo.language || 'Sem linguagem'}</li>
+                  </ul>
+              </a> 
+            </li> `)
         if (user.repositories.length > 0) {
             this.userProfile.innerHTML += `<div class="repositories section">
                                                 <h2>Repositórios</h2>

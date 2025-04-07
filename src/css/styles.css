@@ -159,6 +159,13 @@ main {
   display: none;
 }
 
+.repo-info{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  max-width: 250px;
+}
+
 .repo-info li{
   margin: 1px;
   border-radius: 5px;
@@ -168,7 +175,7 @@ main {
 } 
 
 .repo-name{
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   margin-bottom: 10px;
 }
